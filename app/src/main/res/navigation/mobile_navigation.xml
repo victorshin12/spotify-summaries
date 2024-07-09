@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home_generate"
+        android:name="com.example.spotifyapp.GenerateWrapped"
+        android:label="Home"
+        tools:layout="@layout/generate_wrapped" >
+        <action
+            android:id="@+id/action_generateWrapped_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.spotifyapp.WrapperFragment"
+        android:label="Home"
+        tools:layout="@layout/home_fragment" >
+
+        <argument
+            android:name="time"
+            app:argType="string"
+            android:defaultValue='"medium_term"' />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_home_generate"
+            app:destination="@id/navigation_home_generate" />
+        <action
+            android:id="@+id/action_navigation_home_to_savedWrapped"
+            app:destination="@id/savedWrapped" />
+        <argument
+            android:name="loadWrap"
+            app:argType="com.example.spotifyapp.Wrapped" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_games"
+        android:name="com.example.spotifyapp.GamesTabFragment"
+        android:label="Games"
+        tools:layout="@layout/fragment_games_tab" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_GPT"
+        android:name="com.example.spotifyapp.GPTFragment"
+        android:label="GPT"
+        tools:layout="@layout/gpt_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.spotifyapp.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/profile_fragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/savedWrapped"
+        android:name="com.example.spotifyapp.SavedWrapped"
+        android:label="SavedWrapped"
+        tools:layout="@layout/generate_saved_wrap">
+        <action
+            android:id="@+id/action_savedWrapped_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
+
+</navigation>
